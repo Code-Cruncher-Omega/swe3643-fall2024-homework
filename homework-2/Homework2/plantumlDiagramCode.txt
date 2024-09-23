@@ -1,0 +1,68 @@
+@startuml
+split
+-[hidden]->
+:START Sample Std Dev;
+->Client PASSES $valuesArr;
+:ENTRY FUNC Compute Sample Std Dev;
+split again
+-[hidden]->
+:START Population Std Dev;
+->Client PASSES $valuesArr;
+:ENTRY FUNC Compute Pop Std Dev;
+end split
+->PASS $valuesArr,
+$isPopulation;
+:FUNC Compute Standard Deviation;
+if(Is Array Empty?) then
+->Empty;
+:ERROR - $valuesArr cannot be empty;
+detach
+endif
+->PASS $valuesArr;
+:FUNC Compute Mean of Values;
+if(Is Array Empty?) then
+->Empty;
+:ERROR - $valuesArr cannot be empty;
+detach
+endif
+repeat :LOOP All Values Processed?;
+:Accumulate Sum of Values;
+repeat while (Values Remain) is (Next Value);
+->No, Values Remain;
+:ASSIGN $mean = sum / array length;
+:End of FUNC Compute Mean of Values;
+->PASS $valuesArr,
+$mean;
+:FUNC Compute Square of Differences;
+if(Is Array Empty?) then
+->Empty;
+:ERROR - $valuesArr cannot be empty;
+detach
+endif
+repeat :LOOP All Values Processed?;
+:Accumulate Sum of Square Differences;
+repeat while (Values Remain) is (Next Value);
+->No, Values Remain;
+:ASSIGN $squareAccumulator = sum of square differences;
+:End of FUNC Compute Square of Differences;
+->PASS $squareAccumulator,
+$numValues = $valuesArr length,
+$isPopulation;
+:FUNC Compute Variance;
+if (Not $isPopulation) then
+->$isPopulation is false;
+:ASSIGN $numValues = $numValues - 1;
+else
+->$isPopulation is true;
+endif
+if ($numValues < 1) then
+->$numValues is 0 or less;
+:ERROR - $numValues is too low (sample size must be >=2, pop size must be >= 1);
+detach
+endif
+->$numValues is greater than 1;
+:End of FUNC Compute Variance;
+->PASS $squareAccumulator / $numValues;
+:MATH SquareRoot;
+:RETURN result;
+@enduml
