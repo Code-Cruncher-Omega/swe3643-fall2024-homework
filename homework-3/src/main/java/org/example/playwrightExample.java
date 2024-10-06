@@ -19,7 +19,6 @@ public class playwrightExample {
         }
 
         //Example 2
-
         try (Playwright playwright = Playwright.create()) {
             Browser browser = playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(50));
             Page page = browser.newPage();
