@@ -5,6 +5,8 @@
    *Studied a block of pseudocode and converted it to a graph showing every possible path*
    
    [Branch Diagram](BranchDiagram.png "BranchDiagram.png")
+
+   [plantuml Code](plantumlDiagramCode.txt "plantumlDiagramCode.txt")
    
    ![Diagram](https://github.com/Code-Cruncher-Omega/swe3643-fall2024-homework/blob/main/homework-2/Homework2/BranchDiagram.png)
 ### 2. Converted Pseudocode to Operational Code
