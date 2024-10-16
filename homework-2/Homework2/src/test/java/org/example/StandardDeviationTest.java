@@ -92,7 +92,7 @@ class StandardDeviationTest {
     }
 
     @Test
-    void SampleStandardDeviation_ValidList_ReturnsDouble() {
+    void computeSampleStandardDeviation_ValidList_ReturnsDouble() {
 
         // Arrange
         double [] valuesList = {9.0, 6.0, 8.0, 5.0, 7.0};
@@ -111,7 +111,7 @@ class StandardDeviationTest {
     }
 
     @Test
-    void PopulationStandardDeviation_ValidList_ReturnsDouble() {
+    void computePopulationStandardDeviation_ValidList_ReturnsDouble() {
 
         // Arrange
         double[] valuesList = {9.0, 2.0, 5.0, 4.0, 12.0, 7.0, 8.0, 11.0, 9.0, 3.0, 7.0, 4.0, 12.0, 5.0, 4.0, 10.0, 9.0, 6.0, 9.0, 4.0};
